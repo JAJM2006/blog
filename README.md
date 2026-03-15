@@ -1,4 +1,4 @@
-# [Astro](https://astro.build) Blog Template
+# [Astro](https://astro.build) Blog Template.
 
 [![Screenshot](screenshot.png)](https://astro-blog-template.netlify.app/)
 
