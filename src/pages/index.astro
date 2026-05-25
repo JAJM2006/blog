@@ -1,99 +1,529 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAJM — Academic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-const title = 'My Astro Blog';
-const description = 'The perfect starter for your perfect blog.';
-const permalink = Astro.site.href;
----
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<BaseLayout title={title} description={description} permalink={permalink}>
-  <div class="home-container">
-    <div class="home-copy">
-      <h1>Welcome to your new Astro Blog</h1>
-      <p>Check out the docs on <a href="https://www.github.com/Charca/astro-blog-template" target="_blank" rel="noopener">GitHub</a> to get started.</p>
+    :root {
+      --ink:       #0d0d0f;
+      --ink-2:     #141418;
+      --ink-3:     #1c1c22;
+      --ink-4:     #252530;
+      --rule:      #2e2e3a;
+      --rule-2:    #3d3d50;
+      --dim:       #5a5a72;
+      --muted:     #8585a0;
+      --body:      #c8c8d8;
+      --head:      #e8e8f0;
+      --bright:    #f4f4f8;
+      --accent:    #a89f6e;
+      --accent-2:  #c4b98a;
+      --accent-dim:#3a3520;
+      --mono:      'JetBrains Mono', monospace;
+      --serif:     'EB Garamond', 'Libre Baskerville', Georgia, serif;
+      --max:       860px;
+    }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      background: var(--ink);
+      color: var(--body);
+      font-family: var(--serif);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4 { color: var(--head); font-family: var(--serif); font-weight: 400; line-height: 1.25; }
+    p { margin-bottom: 1.1em; max-width: 66ch; }
+    a { color: var(--accent-2); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+    a:hover { color: var(--bright); border-bottom-color: var(--accent); }
+    strong { color: var(--head); font-weight: 500; }
+    em { font-style: italic; }
+
+    .mono { font-family: var(--mono); font-size: .78em; font-weight: 300; letter-spacing: .02em; }
+    .label { font-family: var(--mono); font-size: .68em; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+    .rule-h { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+    .rule-h.tight { margin: 1.5rem 0; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,13,15,.92);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--mono); font-size: .78em; font-weight: 500;
+      letter-spacing: .08em; color: var(--accent-2);
+      border-bottom: none;
+    }
+    .nav-logo:hover { color: var(--bright); border-bottom: none; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-family: var(--mono); font-size: .72em;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); border-bottom: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--bright); border-bottom: none; }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 8rem 0 6rem;
+      border-bottom: 1px solid var(--rule);
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none; opacity: .04;
+      background-image:
+        linear-gradient(var(--accent) 1px, transparent 1px),
+        linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-eyebrow { margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .hero-eyebrow::after { content: ''; flex: 1; max-width: 120px; height: 1px; background: var(--accent); opacity: .5; }
+    .hero-title {
+      font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 400; line-height: 1.1; letter-spacing: -.01em;
+      color: var(--bright); margin-bottom: .75rem;
+    }
+    .hero-title em { color: var(--accent-2); font-style: italic; }
+    .hero-subtitle {
+      font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: var(--muted); margin-bottom: 2.5rem;
+      font-style: italic; max-width: 54ch;
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--mono); font-size: .72em; letter-spacing: .1em;
+      text-transform: uppercase; padding: .7em 1.6em;
+      border: 1px solid var(--rule-2); color: var(--body);
+      border-radius: 2px; transition: background .2s, color .2s, border-color .2s;
+      cursor: pointer; display: inline-block;
+    }
+    .btn:hover { background: var(--ink-4); color: var(--bright); border-color: var(--accent); border-bottom: 1px solid var(--accent); }
+    .btn-accent { border-color: var(--accent); color: var(--accent-2); }
+    .btn-accent:hover { background: var(--accent-dim); color: var(--bright); border-bottom: 1px solid var(--accent); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+    .section-header { display: flex; align-items: baseline; gap: 1.25rem; margin-bottom: 3rem; }
+    .section-num { font-family: var(--mono); font-size: .7em; color: var(--accent); }
+    .section-title { font-size: 1.7rem; letter-spacing: -.01em; }
+
+    /* ─── ABOUT ─── */
+    .about-layout { display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: start; }
+    .about-meta { display: flex; flex-direction: column; gap: 1.5rem; }
+    .meta-block { border-left: 2px solid var(--accent-dim); padding-left: 1rem; }
+    .meta-block .label { display: block; margin-bottom: .3rem; }
+    .meta-block p { color: var(--muted); font-size: .92em; margin: 0; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ─── WORKS / PROJECTS ─── */
+    .entry-list { display: flex; flex-direction: column; gap: 0; }
+    .entry {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 80px 1fr auto;
+      gap: 1.5rem; align-items: start;
+    }
+    .entry:first-child { border-top: 1px solid var(--rule); }
+    .entry-year { font-family: var(--mono); font-size: .72em; color: var(--dim); padding-top: .15rem; }
+    .entry-title { font-size: 1.05rem; font-weight: 500; color: var(--head); margin-bottom: .25rem; }
+    .entry-title a { color: var(--head); border-bottom-color: transparent; }
+    .entry-title a:hover { color: var(--accent-2); border-bottom-color: var(--accent); }
+    .entry-meta { font-family: var(--mono); font-size: .68em; color: var(--dim); margin-bottom: .45rem; letter-spacing: .04em; }
+    .entry-desc { font-size: .91em; color: var(--muted); line-height: 1.6; margin: 0; max-width: 55ch; }
+    .tag-list { display: flex; flex-direction: column; align-items: flex-end; gap: .4rem; padding-top: .1rem; }
+    .tag {
+      font-family: var(--mono); font-size: .63em; letter-spacing: .08em;
+      text-transform: uppercase; padding: .25em .65em;
+      border: 1px solid var(--rule-2); color: var(--dim);
+      border-radius: 2px; white-space: nowrap;
+    }
+    .tag.pub { border-color: var(--accent-dim); color: var(--accent); }
+    .tag.wip { border-color: #2a3a2a; color: #6a9a6a; }
+
+    /* ─── CV ─── */
+    .cv-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .cv-section-title { font-family: var(--mono); font-size: .68em; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .cv-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .cv-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .cv-item-title { font-size: 1rem; color: var(--head); margin-bottom: .15rem; }
+    .cv-item-sub { font-family: var(--mono); font-size: .7em; color: var(--dim); margin-bottom: .4rem; }
+    .cv-item-desc { font-size: .88em; color: var(--muted); margin: 0; }
+    .cv-download { margin-top: 2rem; }
+
+    /* ─── CONTACT ─── */
+    footer { padding: 4rem 0 3rem; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+    .footer-tagline { font-size: 1.4rem; font-style: italic; color: var(--muted); max-width: 36ch; line-height: 1.4; }
+    .contact-links { display: flex; flex-direction: column; gap: .75rem; }
+    .contact-link { display: flex; align-items: center; gap: .75rem; }
+    .contact-link .label { display: inline; }
+    .contact-link a { border-bottom: none; }
+    .contact-link a:hover { border-bottom: none; }
+    .footer-base {
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--mono); font-size: .66em; color: var(--dim);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 680px) {
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: .65em; }
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-meta { order: -1; flex-direction: row; flex-wrap: wrap; }
+      .entry { grid-template-columns: 60px 1fr; }
+      .tag-list { display: none; }
+      .cv-columns { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ─── SCROLL ANIMATION ─── */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">jajm2006.uk</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#projects">Projects</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="hero-image-container">
-      <picture>
-        <source srcset="/assets/home-illustration.webp" media="(min-width: 600px)">
-        <img class="hero-image" alt="Illustration of person reading a book" src="/assets/home-illustration-small.webp" width="550" height="466">
-      </picture>
-      <p class="caption">
-        Illustration by
-        <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target="_blank" rel="noopener">Icons 8</a>
-        from
-        <a href="https://icons8.com/illustrations" target="_blank" rel="noopener">Ouch!</a>
-      </p>
+  <!-- ── HERO ── -->
+  <header id="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-eyebrow">
+        <span class="label">Academic Portfolio</span>
+      </div>
+      <h1 class="hero-title">Your Name<br /><em>Researcher &amp; Scholar</em></h1>
+      <p class="hero-subtitle">Final-year undergraduate in the Humanities &amp; Social Sciences, transitioning to postgraduate research. Committed to rigorous inquiry and public scholarship.</p>
+      <div class="hero-cta">
+        <a href="#works" class="btn btn-accent">Academic Works</a>
+        <a href="#projects" class="btn">Personal Projects</a>
+        <a href="#cv" class="btn">Curriculum Vitae</a>
+      </div>
     </div>
-  </div>
-</BaseLayout>
+  </header>
 
-<style>
-  .home-container {
-    align-items: center;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    margin: 2em 0;
-    min-height: 400px;
-  }
+  <main>
 
-  .home-copy {
-    flex: 1;
-    padding: 0 1em;
-  }
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <div class="container fade-in">
+        <div class="section-header">
+          <span class="section-num mono">§ 01</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-layout">
+          <div class="about-text">
+            <p>
+              I am a final-year undergraduate student specialising in [your field, e.g. <strong>Political Theory and Sociology</strong>] at [Your University]. My research sits at the intersection of [themes], with a particular focus on [specific interest].
+            </p>
+            <p>
+              Beginning in [year], I will be pursuing postgraduate study in [field] at [institution], where I intend to develop my doctoral thesis on [subject area]. I am interested in questions of [thematic interest 1], [thematic interest 2], and their implications for contemporary scholarship.
+            </p>
+            <p>
+              Outside of formal research, I maintain a set of personal and technical projects that inform my methodological thinking — including work in data analysis, digital humanities, and open-source tooling.
+            </p>
+            <hr class="rule-h" />
+            <p style="font-style:italic; color:var(--muted); font-size:.94em;">
+              I am currently open to research collaborations, conference opportunities, and postgraduate networks in [field].
+            </p>
+          </div>
+          <div class="about-meta">
+            <div class="meta-block">
+              <span class="label">Institution</span>
+              <p>Your University<br />School of [Faculty]</p>
+            </div>
+            <div class="meta-block">
+              <span class="label">Research Areas</span>
+              <p>Political Theory<br />Social Science Methods<br />Critical Theory</p>
+            </div>
+            <div class="meta-block">
+              <span class="label">Status</span>
+              <p>Final Year UG<br />Incoming PG — [year]</p>
+            </div>
+            <div class="meta-block">
+              <span class="label">Location</span>
+              <p>United Kingdom</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  .home-copy h1 {
-    font-weight: 700;
-    margin-bottom: 0.5em;
-    line-height: 1.3;
-  }
+    <!-- ── WORKS ── -->
+    <section id="works">
+      <div class="container fade-in">
+        <div class="section-header">
+          <span class="section-num mono">§ 02</span>
+          <h2 class="section-title">Academic Works</h2>
+        </div>
+        <p style="margin-bottom:2.5rem; color:var(--muted); font-style:italic;">
+          Dissertations, essays, and formal academic outputs. Arranged by year of submission.
+        </p>
+        <div class="entry-list">
 
-  .home-copy p {
-    font-size: 1.4em;
-  }
+          <div class="entry">
+            <div class="entry-year">2025</div>
+            <div>
+              <div class="entry-title"><a href="#">Your Undergraduate Dissertation Title Here</a></div>
+              <div class="entry-meta">Undergraduate Dissertation · Your University · Supervised by Dr. Name</div>
+              <p class="entry-desc">A short abstract or description of the work. What is the central argument? What methods were used? What is the scholarly contribution?</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag pub">Submitted</span>
+              <span class="tag">Dissertation</span>
+            </div>
+          </div>
 
-  .hero-image-container {
-    margin: 0 1em;
-    text-align: center;
-  }
+          <div class="entry">
+            <div class="entry-year">2024</div>
+            <div>
+              <div class="entry-title"><a href="#">Seminar Paper or Extended Essay Title</a></div>
+              <div class="entry-meta">Assessed Essay · Module Name · Grade: [X]</div>
+              <p class="entry-desc">Description of the essay's argument, the theoretical framework employed, and the texts or case studies engaged with.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Essay</span>
+            </div>
+          </div>
 
-  .hero-image-container picture {
-    display: block;
-    min-height: 250px;
-  }
+          <div class="entry">
+            <div class="entry-year">2024</div>
+            <div>
+              <div class="entry-title"><a href="#">Conference Presentation or Paper Title</a></div>
+              <div class="entry-meta">Conference · Event Name, Institution</div>
+              <p class="entry-desc">What this paper argued. Where it was presented. Whether it is available as a written version or recording.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag pub">Presented</span>
+              <span class="tag">Conference</span>
+            </div>
+          </div>
 
-  .caption {
-    font-size: .8em;
-    font-style: italic;
-    text-align: left;
-  }
+          <div class="entry">
+            <div class="entry-year">2023</div>
+            <div>
+              <div class="entry-title">Earlier Work Title</div>
+              <div class="entry-meta">Assessed Essay · Module Name</div>
+              <p class="entry-desc">Brief description of the work and its themes.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Essay</span>
+            </div>
+          </div>
 
-  .hero-image {
-    width: 100%;
-    max-width: 550px;
-    margin-bottom: 1em;
-  }
+        </div>
+      </div>
+    </section>
 
-  @media (max-width: 1200px) {
-    p {
-      font-size: 1.2em;
-    }
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+      <div class="container fade-in">
+        <div class="section-header">
+          <span class="section-num mono">§ 03</span>
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <p style="margin-bottom:2.5rem; color:var(--muted); font-style:italic;">
+          Personal, technical, and interdisciplinary work — side inquiries that sit outside formal academic submission.
+        </p>
+        <div class="entry-list">
 
-    .hero-image {
-      max-width: 400px;
-    }
-  }
+          <div class="entry">
+            <div class="entry-year">2025</div>
+            <div>
+              <div class="entry-title"><a href="#">Digital Humanities Tool or Dataset</a></div>
+              <div class="entry-meta">Personal Project · GitHub or Link</div>
+              <p class="entry-desc">A short description of what you built or assembled, why it matters, and what skills or methods it draws on. Technical projects are welcome here — data analysis, archival work, text analysis, etc.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag wip">Ongoing</span>
+              <span class="tag">Digital Humanities</span>
+            </div>
+          </div>
 
-  @media (max-width: 800px) {
-    .home-container {
-      flex-direction: column;
-    }
+          <div class="entry">
+            <div class="entry-year">2024</div>
+            <div>
+              <div class="entry-title"><a href="#">Independent Research or Reading Project</a></div>
+              <div class="entry-meta">Independent Study · Self-directed</div>
+              <p class="entry-desc">Description of an independent reading group, research thread, or self-directed inquiry. What prompted it? What came out of it?</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Research</span>
+            </div>
+          </div>
 
-    .home-copy {
-      flex: 0;
-      padding-bottom: 2em;
-      text-align: center;
-    }
-  }
-</style>
+          <div class="entry">
+            <div class="entry-year">2024</div>
+            <div>
+              <div class="entry-title"><a href="#">Another Project — Technical, Creative, or Civic</a></div>
+              <div class="entry-meta">Project Type · Collaborators if any</div>
+              <p class="entry-desc">This could be a student publication, a policy brief, a software tool, a community project, or anything else worth sharing publicly.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Misc</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CV ── -->
+    <section id="cv">
+      <div class="container fade-in">
+        <div class="section-header">
+          <span class="section-num mono">§ 04</span>
+          <h2 class="section-title">Curriculum Vitae</h2>
+        </div>
+        <div class="cv-columns">
+
+          <div>
+            <div class="cv-section-title">Education</div>
+            <div class="cv-item">
+              <div class="cv-item-title">BA [Your Degree], [Your University]</div>
+              <div class="cv-item-sub">2022 – 2025</div>
+              <p class="cv-item-desc">Final-year undergraduate. Thesis: "[Dissertation Title]". Supervised by [Supervisor].</p>
+            </div>
+            <div class="cv-item">
+              <div class="cv-item-title">[Secondary School / College]</div>
+              <div class="cv-item-sub">2015 – 2022</div>
+              <p class="cv-item-desc">A-levels: [Subjects]. Awards: [Any relevant prizes].</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="cv-section-title">Experience &amp; Roles</div>
+            <div class="cv-item">
+              <div class="cv-item-title">Research Assistant or Internship Role</div>
+              <div class="cv-item-sub">Organisation · Year</div>
+              <p class="cv-item-desc">Brief description of responsibilities and outputs.</p>
+            </div>
+            <div class="cv-item">
+              <div class="cv-item-title">Society President / Editor / Volunteer</div>
+              <div class="cv-item-sub">University Body · Year–Year</div>
+              <p class="cv-item-desc">Brief description of what this involved and what you contributed.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="cv-section-title">Awards &amp; Distinctions</div>
+            <div class="cv-item">
+              <div class="cv-item-title">Prize or Scholarship Name</div>
+              <div class="cv-item-sub">Awarding Body · Year</div>
+              <p class="cv-item-desc">Brief context for the award.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="cv-section-title">Skills &amp; Methods</div>
+            <div class="cv-item">
+              <div class="cv-item-title">Research Methods</div>
+              <div class="cv-item-sub">Qualitative &amp; Quantitative</div>
+              <p class="cv-item-desc">Discourse analysis, archival research, interview methods, thematic coding, statistical analysis (e.g. R, SPSS).</p>
+            </div>
+            <div class="cv-item">
+              <div class="cv-item-title">Technical Skills</div>
+              <div class="cv-item-sub">Software &amp; Tools</div>
+              <p class="cv-item-desc">List relevant software, languages, tools — e.g. Python, R, LaTeX, NVivo, ArcGIS, Git.</p>
+            </div>
+            <div class="cv-item">
+              <div class="cv-item-title">Languages</div>
+              <div class="cv-item-sub">Natural Languages</div>
+              <p class="cv-item-desc">English (native), [Language] (level), etc.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cv-download">
+          <a href="cv.pdf" class="btn btn-accent">Download full CV (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER / CONTACT ── -->
+  <footer id="contact">
+    <div class="container fade-in">
+      <div class="section-header">
+        <span class="section-num mono">§ 05</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="footer-inner">
+        <p class="footer-tagline">"The unexamined life is not worth living — and the unexamined argument is not worth making."</p>
+        <div class="contact-links">
+          <div class="contact-link">
+            <span class="label">Email</span>
+            <a href="mailto:you@jajm2006.uk">you@jajm2006.uk</a>
+          </div>
+          <div class="contact-link">
+            <span class="label">ORCID</span>
+            <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">0000-0000-0000-0000</a>
+          </div>
+          <div class="contact-link">
+            <span class="label">GitHub</span>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+          </div>
+          <div class="contact-link">
+            <span class="label">LinkedIn</span>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a>
+          </div>
+          <div class="contact-link">
+            <span class="label">Academia.edu</span>
+            <a href="https://independent.academia.edu/yourname" target="_blank" rel="noopener">academia.edu</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2025 JAJM — jajm2006.uk</span>
+        <span class="mono">Static HTML · No tracking · No cookies</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
