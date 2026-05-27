@@ -24,5 +24,3 @@ export default defineConfig({
     ],
   },
 })
-
-John
