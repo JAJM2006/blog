@@ -1,4 +1,4 @@
-# jajm2006.uk — Personal Portfolio & CV
+# jajm2006.uk | Personal Portfolio & CV
 
 This repo is a Personal Portfolio and online C. Built with Astro, deployed via Cloudflare Workers.
 
