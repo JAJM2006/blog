@@ -92,7 +92,7 @@
     .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: .68em; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom: none; transition: color .2s; white-space: nowrap; }
     .nav-links a:hover { color: var(--bright); border-bottom: none; }
     .nav-links a.active { color: var(--accent-2); }
-    .theme-toggle { background: none; border: 1px solid var(--rule-2); border-radius: 4px; cursor: pointer; font-size: .85rem; padding: .3em .55em; color: var(--muted); transition: color .2s, border-color .2s; line-height: 1; flex-shrink: 0; }
+    .theme-toggle { background: none; border: 1px solid var(--rule-2); border-radius: 4px; cursor: pointer; font-size: .85rem; padding: .3em .55em; color: var(--muted); transition: color .2s, border-color .2s; }
     .theme-toggle:hover { color: var(--bright); border-color: var(--accent); }
     .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--muted); border-radius: 2px; transition: transform .25s, opacity .25s; }
@@ -106,7 +106,7 @@
 
     /* ── HERO ── */
     #hero { padding: 6rem 0 5rem; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
-    .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: .04; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: .04; background-image: linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px); background-size: 32px 32px; }
     .hero-eyebrow { margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
     .hero-eyebrow::after { content: ''; flex: 1; max-width: 120px; height: 1px; background: var(--accent); opacity: .5; }
     .hero-title { font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 400; line-height: 1.1; letter-spacing: -.01em; color: var(--bright); margin-bottom: .75rem; }
@@ -149,10 +149,10 @@
     .essay-title { font-size: 1rem; color: var(--head); font-weight: 500; margin-bottom: .3rem; line-height: 1.35; }
     .essay-abstract { font-size: .9em; color: var(--muted); line-height: 1.65; margin-bottom: .75rem; max-width: 62ch; }
     .essay-footer { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .essay-tag { font-family: 'JetBrains Mono', monospace; font-size: .6em; letter-spacing: .08em; text-transform: uppercase; padding: .25em .6em; border: 1px solid var(--rule-2); color: var(--dim); border-radius: 2px; white-space: nowrap; }
+    .essay-tag { font-family: 'JetBrains Mono', monospace; font-size: .6em; letter-spacing: .08em; text-transform: uppercase; padding: .25em .6em; border: 1px solid var(--rule-2); color: var(--dim); border-radius: 3px; }
     .essay-tag.wip { border-color: #2a3a2a; color: #6a9a6a; }
     .essay-tag.done { border-color: #1e3a4a; color: #6aaaba; }
-    .essay-download { font-family: 'JetBrains Mono', monospace; font-size: .62em; letter-spacing: .08em; text-transform: uppercase; padding: .25em .75em; border: 1px solid var(--accent); color: var(--accent-2); border-radius: 2px; transition: background .2s, color .2s; }
+    .essay-download { font-family: 'JetBrains Mono', monospace; font-size: .62em; letter-spacing: .08em; text-transform: uppercase; padding: .25em .75em; border: 1px solid var(--accent); color: var(--accent); border-radius: 3px; transition: background .2s, color .2s, border-color .2s; }
     .essay-download:hover { background: var(--accent-dim); color: var(--bright); border-bottom-color: var(--accent); }
 
     /* ── SECTIONS ── */
@@ -164,7 +164,7 @@
 
     /* ── FOOTER ── */
     footer { padding: 4rem 0 3rem; }
-    .footer-base { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: .64em; color: var(--dim); }
+    .footer-base { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: .72em; color: var(--muted); }
 
     /* ── SCROLL FADE ── */
     .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
@@ -254,7 +254,7 @@
               <div class="module-title">Diplomacy in the Modern Age</div>
               <div class="essay">
                 <div class="essay-title">Are energy resources a blessing or a curse for smaller states?</div>
-                <p class="essay-abstract">This essay investigates the impact of energy resource wealth on the diplomatic and economic stability of smaller nations. It explores whether these resources act as a "blessing" by providing leverage and wealth, or a "curse" that leads to dependency and conflict, addressing the complex role energy plays in contemporary global security.</p>
+                <p class="essay-abstract">This essay investigates the impact of energy resource wealth on the diplomatic and economic stability of smaller nations. It explores whether these resou[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/diplomacy-energy-resources.pdf" class="essay-download">Download PDF</a>
@@ -266,7 +266,7 @@
               <div class="module-title">Intelligence Threats, Triumphs and Blunders</div>
               <div class="essay">
                 <div class="essay-title">How Damaging are Unauthorised Disclosures to National Security?</div>
-                <p class="essay-abstract">Unauthorised disclosures of classified information present a profound challenge to modern national security and surveillance. This essay evaluates the impact of such leaks through case studies including Edward Snowden, Project Azorian, and Operation Rubicon, discussing the complex consequences and divided public perception of leakers as either traitors or heroes.</p>
+                <p class="essay-abstract">Unauthorised disclosures of classified information present a profound challenge to modern national security and surveillance. This essay evaluates the im[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/unauthorised-disclosures-national-security.pdf" class="essay-download">Download PDF</a>
@@ -278,7 +278,7 @@
               <div class="module-title">Introduction to Political Theory</div>
               <div class="essay">
                 <div class="essay-title">Is the abolition of the family the only way to achieve equality of opportunity?</div>
-                <p class="essay-abstract">Centering on George Murdock's definition of the family as a social group characterised by economic cooperation and reproduction, this essay analyses the family unit's role in social structures. It explores the political theory that the family may act as an obstacle to achieving true equality of opportunity, evaluating proposed solutions including its potential abolition.</p>
+                <p class="essay-abstract">Centering on George Murdock's definition of the family as a social group characterised by economic cooperation and reproduction, this essay analyses the [...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/abolition-of-family-equality.pdf" class="essay-download">Download PDF</a>
@@ -305,7 +305,7 @@
               <div class="module-title">Cyber Challenges</div>
               <div class="essay">
                 <div class="essay-title">In which ways will technology transform military conflict over the next twenty years?</div>
-                <p class="essay-abstract">This paper argues that the nature of war is constantly adapting to the technological capabilities of the time. It explores how emerging technologies like Artificial Intelligence, semi-autonomous unmanned systems, and cyber warfare will reshape military strategy, highlighting initiatives like NATO's DIANA project and examining the ethical and geopolitical risks of a more data-driven battlefield.</p>
+                <p class="essay-abstract">This paper argues that the nature of war is constantly adapting to the technological capabilities of the time. It explores how emerging technologies like[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/technology-military-conflict.pdf" class="essay-download">Download PDF</a>
@@ -317,7 +317,7 @@
               <div class="module-title">Foundations of Intelligence Organisations and Structures</div>
               <div class="essay">
                 <div class="essay-title">The Importance of "All-Source Intelligence" — Advantages and Disadvantages of HUMINT, SIGINT, and OSINT</div>
-                <p class="essay-abstract">Focusing on the Intelligence Cycle, this essay assesses the specific advantages and disadvantages of HUMINT, SIGINT, and OSINT. It defines intelligence as actionable insight and emphasises that effective strategic decisions require All-Source Intelligence — the combination of multiple collection methodologies — citing historical foundations from Sun Tzu's <em>The Art of War</em>.</p>
+                <p class="essay-abstract">Focusing on the Intelligence Cycle, this essay assesses the specific advantages and disadvantages of HUMINT, SIGINT, and OSINT. It defines intelligence a[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/all-source-intelligence-humint-sigint-osint.pdf" class="essay-download">Download PDF</a>
@@ -329,7 +329,7 @@
               <div class="module-title">Foundations of Global Security</div>
               <div class="essay">
                 <div class="essay-title">Why has NATO persisted in the Post-Cold War Period?</div>
-                <p class="essay-abstract">This essay examines the endurance of NATO following the dissolution of the Soviet Union, exploring the alliance's transition from a Cold War collective defence pact to a modern pillar of Western political dominance and global stability. It argues that the organisation persists because it provides a critical framework for transatlantic security cooperation and democratic alignment.</p>
+                <p class="essay-abstract">This essay examines the endurance of NATO following the dissolution of the Soviet Union, exploring the alliance's transition from a Cold War collective d[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/nato-post-cold-war.pdf" class="essay-download">Download PDF</a>
@@ -356,7 +356,7 @@
               <div class="module-title">Development and Security</div>
               <div class="essay">
                 <div class="essay-title">Do sub-state actors pose a threat to 'development-security'?</div>
-                <p class="essay-abstract">Focusing on regions where state authority is fragmented or absent, this paper investigates the impact of sub-state actors — insurgent groups, militias, and criminal syndicates — on the development-security nexus. It explores how these groups exploit power vacuums to establish alternative governance structures, concluding that they represent a fundamental challenge to both local development goals and broader international security.</p>
+                <p class="essay-abstract">Focusing on regions where state authority is fragmented or absent, this paper investigates the impact of sub-state actors — insurgent groups, militias,[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/sub-state-actors-development-security.pdf" class="essay-download">Download PDF</a>
@@ -368,7 +368,7 @@
               <div class="module-title">National Security in a Cyber-Age</div>
               <div class="essay">
                 <div class="essay-title">Marks and Spencer plc — A Risk Assessment</div>
-                <p class="essay-abstract">This essay presents a detailed security risk assessment of Marks and Spencer plc in the wake of a 2025 ransomware attack. It evaluates the vulnerabilities inherent in large-scale retail infrastructures, focusing on asset risk analysis and the protection of consumer data, emphasising the necessity of continuous monitoring and robust incident response frameworks.</p>
+                <p class="essay-abstract">This essay presents a detailed security risk assessment of Marks and Spencer plc in the wake of a 2025 ransomware attack. It evaluates the vulnerabilitie[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/marks-spencer-risk-assessment.pdf" class="essay-download">Download PDF</a>
@@ -380,7 +380,7 @@
               <div class="module-title">Terrorism and Counter-Terrorism</div>
               <div class="essay">
                 <div class="essay-title">Why is terrorism a contested concept?</div>
-                <p class="essay-abstract">The definition of "terrorism" remains one of the most debated topics in contemporary geopolitics. This essay traces the etymology of the term from the French Revolution's Reign of Terror to its modern usage, examining the "freedom fighter vs. terrorist" dichotomy and arguing that the lack of a universal definition stems from conflicting political interests and the evolving tactics of non-state actors.</p>
+                <p class="essay-abstract">The definition of "terrorism" remains one of the most debated topics in contemporary geopolitics. This essay traces the etymology of the term from the Fr[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/terrorism-contested-concept.pdf" class="essay-download">Download PDF</a>
@@ -407,7 +407,7 @@
               <div class="module-title">Integrated Industry Experience</div>
               <div class="essay">
                 <div class="essay-title">What I Have Learnt</div>
-                <p class="essay-abstract">This reflective report outlines the pedagogical and professional development gained through the University of Buckingham's Integrated Industry Experience Module. It details the preparation, methodology, and practical applications of security and intelligence theories in a real-world professional setting, highlighting the value of experiential learning in bridging the gap between academic study and the competencies required by the intelligence and cyber security industries.</p>
+                <p class="essay-abstract">This reflective report outlines the pedagogical and professional development gained through the University of Buckingham's Integrated Industry Experience[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/integrated-industry-experience.pdf" class="essay-download">Download PDF</a>
@@ -445,7 +445,7 @@
               <div class="module-title">DNA &amp; Crime</div>
               <div class="essay">
                 <div class="essay-title">Can DNA analysis assist in disrupting the illegal trade in cannabis?</div>
-                <p class="essay-abstract">This paper explores the intersection of forensic botany and criminal investigation, focusing on the use of DNA profiling to combat the illicit cannabis trade. It categorises the biological complexities of the Cannabis genus and evaluates how genetic sequencing can be used to track the geographic origin and distribution networks of illegal narcotics, arguing that DNA analysis is an increasingly vital tool for law enforcement.</p>
+                <p class="essay-abstract">This paper explores the intersection of forensic botany and criminal investigation, focusing on the use of DNA profiling to combat the illicit cannabis t[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/dna-cannabis-trade.pdf" class="essay-download">Download PDF</a>
@@ -453,7 +453,7 @@
               </div>
               <div class="essay">
                 <div class="essay-title">An Introduction Into Forensic Genetic Genealogy</div>
-                <p class="essay-abstract">Forensic Genetic Genealogy (FGG) is an emerging investigative tool that utilises single-nucleotide polymorphisms from biological samples to identify familial matches through consumer DNA databases. This essay introduces the technical processes of FGG and discusses its application in North America and Scandinavia, addressing the significant legal and ethical challenges posed by the unregulated nature of these databases.</p>
+                <p class="essay-abstract">Forensic Genetic Genealogy (FGG) is an emerging investigative tool that utilises single-nucleotide polymorphisms from biological samples to identify fami[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/forensic-genetic-genealogy.pdf" class="essay-download">Download PDF</a>
@@ -465,7 +465,7 @@
               <div class="module-title">Conflict, Crisis, and Strategic Decision-Making</div>
               <div class="essay">
                 <div class="essay-title">Examine the concepts of 'guerrilla warfare' and 'insurgency' and the effectiveness of at least two states' counter-insurgency responses</div>
-                <p class="essay-abstract">This essay explores the evolution of "new wars" characterised by globalisation and the rise of non-state actors that challenge the traditional Westphalian state system. Through case studies of the Sri Lankan Civil War, the War on Terror, and the Vietnam War, the paper assesses the effectiveness of different state counter-insurgency responses against irregular personnel and ad hoc units.</p>
+                <p class="essay-abstract">This essay explores the evolution of "new wars" characterised by globalisation and the rise of non-state actors that challenge the traditional Westphalia[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/guerrilla-warfare-counterinsurgency.pdf" class="essay-download">Download PDF</a>
@@ -492,7 +492,7 @@
               <div class="module-title">Global Security and International Law</div>
               <div class="essay">
                 <div class="essay-title">To what extent can a state legally enact Protection of Nationals Abroad?</div>
-                <p class="essay-abstract">The international system's foundational principle of state sovereignty is increasingly in conflict with a home state's desire to protect its citizens residing in foreign territories. This paper examines the legality of Protection of Nationals Abroad within the framework of the United Nations Charter, analysing the tension between the primacy of the host state and the home state's right to defend its nationals against threats such as arbitrary detention or state failure.</p>
+                <p class="essay-abstract">The international system's foundational principle of state sovereignty is increasingly in conflict with a home state's desire to protect its citizens res[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/protection-of-nationals-abroad.pdf" class="essay-download">Download PDF</a>
@@ -504,7 +504,7 @@
               <div class="module-title">Media, Society, Security, and Cyberspace</div>
               <div class="essay">
                 <div class="essay-title">Is there a need for HUMINT in the age of digital intelligence?</div>
-                <p class="essay-abstract">In an era dominated by digital data, this essay questions the continued relevance of Human Intelligence. It distinguishes between data, information, and actionable intelligence, arguing that while digital intelligence has grown exponentially, human insight remains a critical component of the intelligence landscape and advocates for an all-source approach to navigate a subjective world through contextualised insights.</p>
+                <p class="essay-abstract">In an era dominated by digital data, this essay questions the continued relevance of Human Intelligence. It distinguishes between data, information, and [...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/humint-digital-age.pdf" class="essay-download">Download PDF</a>
@@ -531,7 +531,7 @@
               <div class="module-title">Network Analysis for Criminal Investigators</div>
               <div class="essay">
                 <div class="essay-title">Is it possible to identify criminal networks using mobile phone data?</div>
-                <p class="essay-abstract">Mapping modern criminal organisations is often hampered by the "information problem" — the difficulty of obtaining high-quality data from groups actively concealing their activities. This paper examines how mobile phone data provides a pervasive digital footprint that can be used to construct and evaluate criminal networks, arguing that network identification is an active, constructed process bounded by legal and technical countermeasures.</p>
+                <p class="essay-abstract">Mapping modern criminal organisations is often hampered by the "information problem" — the difficulty of obtaining high-quality data from groups active[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag done">Complete</span>
                   <a href="/works/criminal-networks-mobile-data.pdf" class="essay-download">Download PDF</a>
@@ -539,7 +539,7 @@
               </div>
               <div class="essay">
                 <div class="essay-title">How effective is network analysis in detecting money laundering?</div>
-                <p class="essay-abstract">This essay examines the application of network analysis methodologies to the detection of money laundering operations, evaluating the extent to which graph-based approaches can surface concealed financial flows within complex criminal networks.</p>
+                <p class="essay-abstract">This essay examines the application of network analysis methodologies to the detection of money laundering operations, evaluating the extent to which gra[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag wip">Ongoing</span>
                 </div>
@@ -550,7 +550,7 @@
               <div class="module-title">Security, Intelligence, and Policy Making</div>
               <div class="essay">
                 <div class="essay-title">Far Right Ideologies: A Strategic Report on Threats Posed to Vulnerable Communities in the North East</div>
-                <p class="essay-abstract">Commissioned in partnership with the North East Mayoral Strategic Authority, this strategic report analyses the effects that far-right ideologies — including the manosphere and incel culture — have on vulnerable communities across the North East of England, providing an evidence-based assessment for policy consideration.</p>
+                <p class="essay-abstract">Commissioned in partnership with the North East Mayoral Strategic Authority, this strategic report analyses the effects that far-right ideologies — inc[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag wip">Ongoing</span>
                 </div>
@@ -576,7 +576,7 @@
               <div class="module-title">Undergraduate Dissertation · Supervised by Dr. Tanvi Pate</div>
               <div class="essay">
                 <div class="essay-title">Sustainable Scotland: A Comparative Analysis of Development-Security</div>
-                <p class="essay-abstract">This dissertation analyses the ideas of Scottish development-security through a comparative framework, examining case studies of Norway and China to evaluate how differing models of resource governance, state capacity, and international alignment shape the development-security nexus for a prospective independent Scotland.</p>
+                <p class="essay-abstract">This dissertation analyses the ideas of Scottish development-security through a comparative framework, examining case studies of Norway and China to eval[...]</p>
                 <div class="essay-footer">
                   <span class="essay-tag wip">Ongoing · Due September 2026</span>
                 </div>
